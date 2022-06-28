@@ -1,0 +1,14 @@
+C:\Users\McKenzie\source\repos\submission-manager\SubmissionManager.Data\bin\Debug\net6.0\SubmissionManager.Data.deps.json
+C:\Users\McKenzie\source\repos\submission-manager\SubmissionManager.Data\bin\Debug\net6.0\SubmissionManager.Data.dll
+C:\Users\McKenzie\source\repos\submission-manager\SubmissionManager.Data\bin\Debug\net6.0\ref\SubmissionManager.Data.dll
+C:\Users\McKenzie\source\repos\submission-manager\SubmissionManager.Data\bin\Debug\net6.0\SubmissionManager.Data.pdb
+C:\Users\McKenzie\source\repos\submission-manager\SubmissionManager.Data\obj\Debug\net6.0\SubmissionManager.Data.csproj.AssemblyReference.cache
+C:\Users\McKenzie\source\repos\submission-manager\SubmissionManager.Data\obj\Debug\net6.0\SubmissionManager.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\McKenzie\source\repos\submission-manager\SubmissionManager.Data\obj\Debug\net6.0\SubmissionManager.Data.AssemblyInfoInputs.cache
+C:\Users\McKenzie\source\repos\submission-manager\SubmissionManager.Data\obj\Debug\net6.0\SubmissionManager.Data.AssemblyInfo.cs
+C:\Users\McKenzie\source\repos\submission-manager\SubmissionManager.Data\obj\Debug\net6.0\SubmissionManager.Data.csproj.CoreCompileInputs.cache
+C:\Users\McKenzie\source\repos\submission-manager\SubmissionManager.Data\obj\Debug\net6.0\SubmissionManager.Data.dll
+C:\Users\McKenzie\source\repos\submission-manager\SubmissionManager.Data\obj\Debug\net6.0\ref\SubmissionManager.Data.dll
+C:\Users\McKenzie\source\repos\submission-manager\SubmissionManager.Data\obj\Debug\net6.0\SubmissionManager.Data.pdb
+C:\Users\McKenzie\source\repos\submission-manager\SubmissionManager.Data\bin\Debug\net6.0\SubmissionManager.Data.runtimeconfig.json
+C:\Users\McKenzie\source\repos\submission-manager\SubmissionManager.Data\obj\Debug\net6.0\SubmissionManager.Data.genruntimeconfig.cache

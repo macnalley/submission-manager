@@ -6,4 +6,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SubmissionManager.Data\SubmissionManager.Data.csproj" />
+  </ItemGroup>
+
 </Project>
