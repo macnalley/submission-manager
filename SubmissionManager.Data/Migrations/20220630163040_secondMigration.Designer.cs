@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SubmissionManager.Data;
 
@@ -10,33 +11,13 @@ using SubmissionManager.Data;
 namespace SubmissionManager.Data.Migrations
 {
     [DbContext(typeof(SubmissionContext))]
-    partial class SubmissionContextModelSnapshot : ModelSnapshot
+    [Migration("20220630163040_secondMigration")]
+    partial class secondMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.6");
-
-            modelBuilder.Entity("SubmissionManager.Data.Entities.Document", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("DocumentPath")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("SubmissionId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("SubmissionId")
-                        .IsUnique();
-
-                    b.ToTable("Document");
-                });
 
             modelBuilder.Entity("SubmissionManager.Data.Entities.Submission", b =>
                 {
@@ -53,6 +34,10 @@ namespace SubmissionManager.Data.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("DateSubmitted")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("DocumentPath")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Email")
@@ -72,21 +57,6 @@ namespace SubmissionManager.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Submissions");
-                });
-
-            modelBuilder.Entity("SubmissionManager.Data.Entities.Document", b =>
-                {
-                    b.HasOne("SubmissionManager.Data.Entities.Submission", null)
-                        .WithOne("Document")
-                        .HasForeignKey("SubmissionManager.Data.Entities.Document", "SubmissionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("SubmissionManager.Data.Entities.Submission", b =>
-                {
-                    b.Navigation("Document")
-                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

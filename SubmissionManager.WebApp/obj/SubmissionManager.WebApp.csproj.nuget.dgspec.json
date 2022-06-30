@@ -4,14 +4,14 @@
     "C:\\Users\\McKenzie\\source\\repos\\submission-manager\\SubmissionManager.WebApp\\SubmissionManager.WebApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\McKenzie\\source\\repos\\submission-manager\\SubmissionManager.WebApp\\SubmissionManager.WebApp.csproj": {
+    "C:\\Users\\McKenzie\\source\\repos\\submission-manager\\SubmissionManager.Data\\SubmissionManager.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\McKenzie\\source\\repos\\submission-manager\\SubmissionManager.WebApp\\SubmissionManager.WebApp.csproj",
-        "projectName": "SubmissionManager.WebApp",
-        "projectPath": "C:\\Users\\McKenzie\\source\\repos\\submission-manager\\SubmissionManager.WebApp\\SubmissionManager.WebApp.csproj",
+        "projectUniqueName": "C:\\Users\\McKenzie\\source\\repos\\submission-manager\\SubmissionManager.Data\\SubmissionManager.Data.csproj",
+        "projectName": "SubmissionManager.Data",
+        "projectPath": "C:\\Users\\McKenzie\\source\\repos\\submission-manager\\SubmissionManager.Data\\SubmissionManager.Data.csproj",
         "packagesPath": "C:\\Users\\McKenzie\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\McKenzie\\source\\repos\\submission-manager\\SubmissionManager.WebApp\\obj\\",
+        "outputPath": "C:\\Users\\McKenzie\\source\\repos\\submission-manager\\SubmissionManager.Data\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -41,11 +41,86 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.AspNetCore": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[6.0.6, )"
             },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.6, )"
+            },
             "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[6.0.6, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.106\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\McKenzie\\source\\repos\\submission-manager\\SubmissionManager.WebApp\\SubmissionManager.WebApp.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\McKenzie\\source\\repos\\submission-manager\\SubmissionManager.WebApp\\SubmissionManager.WebApp.csproj",
+        "projectName": "SubmissionManager.WebApp",
+        "projectPath": "C:\\Users\\McKenzie\\source\\repos\\submission-manager\\SubmissionManager.WebApp\\SubmissionManager.WebApp.csproj",
+        "packagesPath": "C:\\Users\\McKenzie\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\McKenzie\\source\\repos\\submission-manager\\SubmissionManager.WebApp\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\McKenzie\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\McKenzie\\source\\repos\\submission-manager\\SubmissionManager.Data\\SubmissionManager.Data.csproj": {
+                "projectPath": "C:\\Users\\McKenzie\\source\\repos\\submission-manager\\SubmissionManager.Data\\SubmissionManager.Data.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[6.0.6, )"
             }

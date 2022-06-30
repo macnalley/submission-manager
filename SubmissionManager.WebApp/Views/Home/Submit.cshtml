@@ -1,0 +1,43 @@
+@using SubmissionManager.Data.Entities;    
+@model Submission
+
+@{
+    ViewData["Title"] = "Submit";
+}
+
+<h1>Submit</h1>
+
+<div>
+    <form method="post" asp-action="Submit" enctype="multipart/form-data">
+        <div class="form-group">
+            <label asp-for="Title" class="control-label">Title of Piece</label>
+            <input asp-for="Title" class="form-control" />
+            <span asp-validation-for="Title" class="text-warning"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Author" class="control-label">Author Name</label>
+            <input asp-for="Author" class="form-control" />
+            <span asp-validation-for="Author" class="text-warning"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Email" class="control-label"></label>
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-warning"></span>
+        </div>
+        <div class="form-group">
+            <label class="control-label">Submission</label>
+            <p>*Note: Documents should be submitted as plain text or word documents. .txt, .rtf, .odt, .doc, and .docx files are accepted.</p>
+            <input asp-for="Document.File" type="file" class="form-control" />
+            <span asp-validation-for="Document" class="text-warning"></span>
+            <span asp-validation-for="Document.FileName" class="text-warning"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="CoverLetter" class="control-label">Cover Letter</label>
+            <input asp-for="CoverLetter" class="form-control" />
+            <span asp-validation-for="CoverLetter" class="text-warning"></span>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit" value="Submit">Submit</button>
+        </div>
+    </form>
+</div>

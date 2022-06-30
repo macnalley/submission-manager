@@ -1,0 +1,32 @@
+@using SubmissionManager.Data.Entities;    
+@model IEnumerable<Submission>
+
+@{
+    ViewData["Title"] = "Submissions";
+}
+
+<h1>Submissions</h1>
+
+<table class="table">
+    <thead>
+        <th>Id</th>
+        <th>Author</th>
+        <th>Title</th>
+        <th>Status</th>
+        <th>Date Submitted</th>
+    </thead>
+    <tbody>
+        @foreach (var submission in Model)
+        {
+            <tr>
+                <td>@submission.Id</td>
+                <td>@submission.Author</td>
+                <td>
+                    <a asp-action="Download" asp-route-id="@submission.Id">@submission.Title</a>
+                </td>
+                <td>@submission.Status</td>
+                <td>@submission.DateSubmitted.ToOADate()</td>
+            </tr>
+        }
+    </tbody>
+</table>

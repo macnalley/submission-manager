@@ -10,4 +10,8 @@
     <ProjectReference Include="..\SubmissionManager.Data\SubmissionManager.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.6" />
+  </ItemGroup>
+
 </Project>
