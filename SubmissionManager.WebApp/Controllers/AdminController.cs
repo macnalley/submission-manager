@@ -5,6 +5,8 @@ using SubmissionManager.Data.Entities;
 using SubmissionManager.Data;
 using Microsoft.EntityFrameworkCore;
 using System.Net;
+using System.IO;
+using Microsoft.AspNetCore.StaticFiles;
 
 namespace SubmissionManager.WebApp.Controllers;
 
@@ -27,14 +29,19 @@ public class AdminController : Controller
             .ToListAsync());
     }
 
-    [HttpGet]
+    [HttpGet("download")]
     public async Task<IActionResult> Download(int id)
     {
         if (id != null)
         {
             var submission = await _context.GetByIdAsync(id);
 
-            }  
-        return View();
+            var file = submission.Document.DocumentPath;
+
+            var fileContents = System.IO.File.ReadAllBytes(file);
+
+            return File(fileContents, "application/octet-stream", submission.Document.FileName);
+        }
+        else return RedirectToAction("Index");  
     }
 }

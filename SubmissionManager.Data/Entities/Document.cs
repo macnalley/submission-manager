@@ -12,9 +12,8 @@ namespace SubmissionManager.Data.Entities
         public int SubmissionId { get; set; }
         [Required, NotMapped]
         public IFormFile File { get; set; }
-        
         [FileExtensions(Extensions = "doc,docx,odt,txt,rtf"), NotMapped]
-        public string FileName 
+        public string UploadedFileName 
         {
             get
             {
@@ -24,6 +23,7 @@ namespace SubmissionManager.Data.Entities
                     return "";
             }
         }
-        public string DocumentPath { get; set; } = "path";
+        public string FileName { get; set; } = "";
+        public string DocumentPath { get; set; } = "";
     }
 }

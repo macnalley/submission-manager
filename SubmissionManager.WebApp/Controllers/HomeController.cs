@@ -25,6 +25,12 @@ public class HomeController : Controller
     }
 
     [HttpGet]
+    public IActionResult Index(SubmissionModel model)
+    {
+        return View(model);
+    }
+
+    [HttpGet]
     public IActionResult Submit()
     {
         return View();
@@ -49,12 +55,15 @@ public class HomeController : Controller
                 }
 
                 model.Document.DocumentPath = path;
+                model.Document.FileName = newFileName;
             }
 
             _context.Add(model);
             await _context.SaveChangesAsync();
+            
+            var returnModel = new SubmissionModel() { Id = model.Id };
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", returnModel);
         }
         else return View();
         
@@ -64,5 +73,24 @@ public class HomeController : Controller
     public IActionResult Error()
     {
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+    }
+
+    public IActionResult CheckStatus()
+    {
+        return View();
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> CheckStatus(SubmissionModel model)
+    {
+        var submission = await _context.GetByIdAndEmailAsync(model.Id, model.Email);
+
+        if (submission != null)
+        {
+            model.Status = submission.Status;    
+        }
+        else model.Id = 0;
+
+        return View(model);
     }
 }

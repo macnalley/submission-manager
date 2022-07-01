@@ -24,4 +24,11 @@ public class SubmissionContext : DbContext
 
         return submission;
     }
+
+    public async Task<Submission> GetByIdAndEmailAsync(int id, string email)
+    {
+        var submission = await Submissions.Where(s => s.Id == id && s.Email == email).SingleOrDefaultAsync();
+
+        return submission;
+    }
 }

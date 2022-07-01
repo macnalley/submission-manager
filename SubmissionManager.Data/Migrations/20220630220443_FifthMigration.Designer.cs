@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SubmissionManager.Data;
 
@@ -10,9 +11,10 @@ using SubmissionManager.Data;
 namespace SubmissionManager.Data.Migrations
 {
     [DbContext(typeof(SubmissionContext))]
-    partial class SubmissionContextModelSnapshot : ModelSnapshot
+    [Migration("20220630220443_FifthMigration")]
+    partial class FifthMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.6");

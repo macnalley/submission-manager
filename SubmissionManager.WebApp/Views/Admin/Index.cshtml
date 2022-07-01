@@ -25,7 +25,7 @@
                     <a asp-action="Download" asp-route-id="@submission.Id">@submission.Title</a>
                 </td>
                 <td>@submission.Status</td>
-                <td>@submission.DateSubmitted.ToOADate()</td>
+                <td>@submission.DateSubmitted.ToShortDateString()</td>
             </tr>
         }
     </tbody>

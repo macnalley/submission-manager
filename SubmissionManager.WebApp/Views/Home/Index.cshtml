@@ -1,4 +1,6 @@
-﻿@{
+﻿@model SubmissionModel
+
+@{
     ViewData["Title"] = "Submission Manager";
 }
 
@@ -7,3 +9,14 @@
 <h2>
     <a asp-controller="Home" asp-action="Submit">Submit</a>
 </h2>
+<h2>
+    <a asp-controller="Home" asp-action="CheckStatus">Check Submission Status</a>
+</h2>
+
+@if (Model.Id > 0)
+{
+    <div class="card">
+        <p>Thank you for your submission!</p>
+        <p>Your submission ID is: @Model.Id</p>
+    </div>
+}
