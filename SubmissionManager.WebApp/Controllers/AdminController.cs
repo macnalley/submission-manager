@@ -44,4 +44,36 @@ public class AdminController : Controller
         }
         else return RedirectToAction("Index");  
     }
+
+    [HttpGet]
+    public async Task<IActionResult> Details(int id)
+    {
+        var model = await _context.GetByIdAsync(id);
+
+        return View(model);
+    }    
+    
+    
+    public async Task<IActionResult> Advance(int id)
+    {
+        var model = await _context.GetByIdAsync(id);
+
+        model.Status = Status.Advanced;
+
+        _context.SaveChanges();
+        
+        return RedirectToAction("Index");
+    }
+
+    public async Task<IActionResult> Reject(int id)
+    {
+        var model = await _context.GetByIdAsync(id);
+
+        model.Status = Status.Rejected;
+
+        _context.SaveChanges();
+        
+        return RedirectToAction("Index");
+    }
+
 }

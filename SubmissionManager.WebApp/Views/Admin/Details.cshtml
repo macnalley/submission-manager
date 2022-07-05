@@ -1,0 +1,26 @@
+@using SubmissionManager.Data.Entities;    
+@model Submission
+
+@{
+    ViewData["Title"] = @Model.Title;
+}
+
+<h1>@Model.Title</h1>
+
+<p>@Model.Author</p>
+
+<p><b>Email:</b> @Model.Email</p>
+
+<p><b>Date Submitted:</b> @Model.DateSubmitted.ToShortDateString()</p>
+
+<p><b>Word Count:</b> @Model.WordCount</p>
+
+<p><b>Status:</b> @Model.Status</p>
+
+<p><b>Cover Letter</b></p>
+
+<p>@Model.CoverLetter</p>
+
+<a class="btn" asp-action="Advance" asp-route-id="@Model.Id">Advance</a>
+
+<a class="btn" asp-action="Reject" asp-route-id="@Model.Id">Reject</a>

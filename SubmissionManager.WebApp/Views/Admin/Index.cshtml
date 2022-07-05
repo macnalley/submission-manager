@@ -14,6 +14,9 @@
         <th>Title</th>
         <th>Status</th>
         <th>Date Submitted</th>
+        <th></th>
+        <th></th>
+        <th></th>
     </thead>
     <tbody>
         @foreach (var submission in Model)
@@ -26,6 +29,15 @@
                 </td>
                 <td>@submission.Status</td>
                 <td>@submission.DateSubmitted.ToShortDateString()</td>
+                <td>
+                    <a class="btn" asp-action="Details" asp-route-id="@submission.Id">Details</a>
+                </td>
+                <td>
+                    <a class="btn" asp-action="Advance" asp-route-id="@submission.Id">Advance</a>
+                </td>
+                <td>
+                    <a class="btn" asp-action="Reject" asp-route-id="@submission.Id">Reject</a>
+                </td>
             </tr>
         }
     </tbody>
