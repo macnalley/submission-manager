@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.RegularExpressions;
 using DocumentFormat.OpenXml.Packaging;
 using Microsoft.AspNetCore.Http;
 
@@ -36,12 +37,26 @@ namespace SubmissionManager.Data.Entities
             {
                 using (var document = WordprocessingDocument.Open(DocumentPath, false))
                 {
-
                     int.TryParse(document.ExtendedFilePropertiesPart.Properties.Words.Text, out wordCount);
                 }
             }
+            else if (Path.GetExtension(FileName) == ".txt")
+            {
+                using (var stream = new System.IO.StreamReader(DocumentPath, true))
+                {
+                    // string text = stream.ReadToEnd();
+                    string text = System.IO.File.ReadAllText(DocumentPath, stream.CurrentEncoding);
 
-            
+                    var regex = new Regex(@"\b\w*\b");
+
+                    wordCount = regex.Matches(text).Count();
+                }
+
+                // string text = System.IO.File.ReadAllText(DocumentPath);
+                
+
+                
+            }
 
 
             wordCount = (int) Math.Round(wordCount / 100d) * 100; 
