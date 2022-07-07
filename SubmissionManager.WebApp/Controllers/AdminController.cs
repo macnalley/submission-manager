@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Net;
 using System.IO;
 using Microsoft.AspNetCore.StaticFiles;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace SubmissionManager.WebApp.Controllers;
 
@@ -22,11 +23,45 @@ public class AdminController : Controller
     }
 
     [HttpGet]
-    public async Task<IActionResult> Index()
+    public async Task<IActionResult> Index(string filter)
     {
-        return View(await _context.Submissions
+        var status = new Status();
+        var submissions = new List<Submission>();
+
+        switch (filter)
+        {
+            case "New":
+                status = Status.New;
+                break;
+            case "Advanced":
+                status = Status.Advanced;
+                break;
+            case "Rejected":
+                status = Status.Rejected;
+                break;
+            case "Accepted":
+                status = Status.Accepted;
+                break;
+            default:
+                status = Status.New;
+                break;
+        }
+        
+        if (filter == "All")
+        {
+            submissions = await _context.Submissions
             .Include(s => s.Document)
-            .ToListAsync());
+            .ToListAsync();
+        }
+        else
+        {
+            submissions = await _context.Submissions
+            .Where(s => s.Status == status)
+            .Include(s => s.Document)
+            .ToListAsync();
+        }
+        
+        return View(submissions);
     }
 
     [HttpGet("download")]
@@ -53,7 +88,7 @@ public class AdminController : Controller
         return View(model);
     }    
     
-    
+
     public async Task<IActionResult> Advance(int id)
     {
         var model = await _context.GetByIdAsync(id);
@@ -75,5 +110,4 @@ public class AdminController : Controller
         
         return RedirectToAction("Index");
     }
-
 }

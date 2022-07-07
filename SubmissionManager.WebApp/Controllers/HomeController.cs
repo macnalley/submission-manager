@@ -56,7 +56,8 @@ public class HomeController : Controller
 
                 model.Document.DocumentPath = path;
                 model.Document.FileName = newFileName;
-            }
+                model.WordCount = model.Document.GetWordCount();
+            } else BadRequest();
 
             _context.Add(model);
             await _context.SaveChangesAsync();

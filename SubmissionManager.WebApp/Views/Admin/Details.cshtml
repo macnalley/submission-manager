@@ -7,9 +7,9 @@
 
 <h1>@Model.Title</h1>
 
-<p>@Model.Author</p>
+<h2>@Model.Author</h2>
 
-<p><b>Email:</b> @Model.Email</p>
+<p><b>Document:</b> @Model.Title</p> <a class="btn btn-primary" asp-action="Download" asp-route-id="@Model.Id">Download</a>
 
 <p><b>Date Submitted:</b> @Model.DateSubmitted.ToShortDateString()</p>
 
@@ -21,6 +21,6 @@
 
 <p>@Model.CoverLetter</p>
 
-<a class="btn" asp-action="Advance" asp-route-id="@Model.Id">Advance</a>
+<a class="btn btn-primary" asp-action="Advance" asp-route-id="@Model.Id">Advance</a>
 
-<a class="btn" asp-action="Reject" asp-route-id="@Model.Id">Reject</a>
+<a class="btn btn-primary" asp-action="Reject" asp-route-id="@Model.Id">Reject</a>

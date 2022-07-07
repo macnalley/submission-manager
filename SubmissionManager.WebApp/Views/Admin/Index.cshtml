@@ -1,4 +1,5 @@
-@using SubmissionManager.Data.Entities;    
+@using SubmissionManager.Data.Entities;
+
 @model IEnumerable<Submission>
 
 @{
@@ -6,6 +7,18 @@
 }
 
 <h1>Submissions</h1>
+
+<form method="get" asp-action="Index">
+    <label for="filter" class="control-label">Filter</label>
+    <select name="filter" class="form-select">
+        <option value="All">All</option>
+        <option value="New">New</option>
+        <option value="Advanced">Advanced</option>
+        <option value="Accepted">Accepted</option>
+        <option value="Rejected">Rejected</option>
+    </select>
+    <button class="btn btn-primary" type="Submit">View</button> 
+</form>
 
 <table class="table">
     <thead>
@@ -23,20 +36,19 @@
         {
             <tr>
                 <td>@submission.Id</td>
-                <td>@submission.Author</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@submission.Id">@submission.Author</a>
+                </td>
                 <td>
                     <a asp-action="Download" asp-route-id="@submission.Id">@submission.Title</a>
                 </td>
                 <td>@submission.Status</td>
                 <td>@submission.DateSubmitted.ToShortDateString()</td>
                 <td>
-                    <a class="btn" asp-action="Details" asp-route-id="@submission.Id">Details</a>
+                    <a class="btn btn-primary" asp-action="Advance" asp-route-id="@submission.Id">Advance</a>
                 </td>
                 <td>
-                    <a class="btn" asp-action="Advance" asp-route-id="@submission.Id">Advance</a>
-                </td>
-                <td>
-                    <a class="btn" asp-action="Reject" asp-route-id="@submission.Id">Reject</a>
+                    <a class="btn btn-primary" asp-action="Reject" asp-route-id="@submission.Id">Reject</a>
                 </td>
             </tr>
         }
