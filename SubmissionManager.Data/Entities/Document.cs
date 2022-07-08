@@ -40,27 +40,25 @@ namespace SubmissionManager.Data.Entities
                     int.TryParse(document.ExtendedFilePropertiesPart.Properties.Words.Text, out wordCount);
                 }
             }
-            else if (Path.GetExtension(FileName) == ".txt")
+            else if (Path.GetExtension(FileName) == ".txt" || Path.GetExtension(FileName) == ".rtf")
             {
                 using (var stream = new System.IO.StreamReader(DocumentPath, true))
                 {
                     // string text = stream.ReadToEnd();
                     string text = System.IO.File.ReadAllText(DocumentPath, stream.CurrentEncoding);
 
-                    var regex = new Regex(@"\b\w*\b");
-
-                    wordCount = regex.Matches(text).Count();
-                }
-
-                // string text = System.IO.File.ReadAllText(DocumentPath);
-                
-
-                
+                    if (Path.GetExtension(FileName) == ".rtf")
+                    {
+                        var rtfDeletionRegex = new Regex(@"({[^}]*}|{|}|\\[\w]*) ?");
+                        text = rtfDeletionRegex.Replace(text, "");
+                    }
+                    
+                    var wordsRegex = new Regex(@"\b\w*\b");
+                    wordCount = wordsRegex.Matches(text).Count();
+                }                
             }
-
-
+            
             wordCount = (int) Math.Round(wordCount / 100d) * 100; 
-
             return wordCount;
         }
     }
