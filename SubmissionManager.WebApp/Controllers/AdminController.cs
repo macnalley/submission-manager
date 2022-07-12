@@ -110,4 +110,16 @@ public class AdminController : Controller
         
         return RedirectToAction("Index");
     }
+
+    public async Task<IActionResult> Accept(int id)
+    {
+        var model = await _context.GetByIdAsync(id);
+
+        model.Status = Status.Accepted;
+
+        _context.SaveChanges();
+        
+        return RedirectToAction("Index");
+    }
+
 }

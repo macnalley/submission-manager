@@ -8,15 +8,16 @@ namespace SubmissionManager.Data.Entities
     {
         [Key]
         public int Id { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Title is required.")]
         public string Title { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Author name is required.")]
         public string Author { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Email is required."), 
+        RegularExpression(@"[^@]*.*\..*", ErrorMessage = "Must be a valid email.")]
         public string Email { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Document is required.")]
         public Document Document { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Cover letter is required.")]
         public string CoverLetter { get; set; }
         public Status Status { get; set; } = Status.New;
         public DateTime DateSubmitted { get; set; } = DateTime.Now;
