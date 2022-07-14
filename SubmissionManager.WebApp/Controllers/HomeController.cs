@@ -39,7 +39,11 @@ public class HomeController : Controller
     [HttpPost]
     public async Task<IActionResult> Submit(Submission model)
     {
-        if (ModelState.IsValid)
+        if (ModelState.IsValid && 
+            model.Document is not null && 
+            model.Document.File is not null && 
+            model.Author is not null &&
+            model.Title is not null)
         {
             var file = model.Document.File;
 

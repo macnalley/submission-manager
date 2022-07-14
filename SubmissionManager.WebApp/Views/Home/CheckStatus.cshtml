@@ -7,48 +7,56 @@
 
 <h1>Check Submission Status</h1>
 
-<form method="get" asp-action="CheckStatus">
+<form method="get" asp-action="CheckStatus" class="w-50">
     <div class="form-group">
         <label asp-for="Id" class="control-label">Your Submission's ID</label>
         <input asp-for="Id" class="form-control" />
         <span asp-validation-for="Id" class="text-warning"></span>
     </div>
+    <br>
     <div class="form-group">
         <label asp-for="Email" class="control-label">Your Email</label>
         <input asp-for="Email" class="form-control" />
         <span asp-validation-for="Email" class="text-warning"></span>
+    </div>
+    <br>
     <div class="form-group">
         <button class="btn btn-primary" type="submit">Submit</button>
     </div>
 </form>
 
-<div class="card">
-    @if (Model.Id > 0)
-    {
-        
-            <p>Thank you for checking on the status of your submission.</p>
-            @switch (Model.Status)
-            {
-                case Status.New: 
-                    <p>Your submission is still under consideration.</p>
-                    break;
-                case Status.Advanced:
-                    <p>Your submission has made to our second round of evaluations 
-                        and is still under consideration.</p>
-                    break;
-                case Status.Rejected:
-                    <p>We apologize, but your submission isn't what we're looking for right now, 
-                        but we appreciate your giving us the opportunity to review it.</p>
-                    break;
-                case Status.Accepted:
-                    <p>We have accepted your submission.</p>
-                    break;
-                default: 
-                    break;
+<br>
+
+<div class="d-flex w-50">
+    <div class="card p-3 align-items-center">
+        <div>
+            @if (Model.Id > 0)
+            {   
+                <p>Thank you for checking on the status of your submission.</p>
+                @switch (Model.Status)
+                {
+                    case Status.New: 
+                        <p>Your submission is still under consideration.</p>
+                        break;
+                    case Status.Advanced:
+                        <p>Your submission has made to our second round of evaluations 
+                            and is still under consideration.</p>
+                        break;
+                    case Status.Rejected:
+                        <p>We apologize, but your submission isn't what we're looking for right now, 
+                            but we appreciate your giving us the opportunity to review it.</p>
+                        break;
+                    case Status.Accepted:
+                        <p>We have accepted your submission.</p>
+                        break;
+                    default: 
+                        break;
+                } 
             } 
-    } 
-    else 
-    {
-        <p>Submission not found.</p>
-    } 
+            else 
+            {
+                <p>Submission not found.</p>
+            }
+        </div> 
+    </div>
 </div>

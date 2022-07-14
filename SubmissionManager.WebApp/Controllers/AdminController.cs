@@ -67,10 +67,10 @@ public class AdminController : Controller
     [HttpGet("download")]
     public async Task<IActionResult> Download(int id)
     {
-        if (id != null)
+        var submission = await _context.GetByIdAsync(id);
+        
+        if (submission.Document is not null)
         {
-            var submission = await _context.GetByIdAsync(id);
-
             var file = submission.Document.DocumentPath;
 
             var fileContents = System.IO.File.ReadAllBytes(file);

@@ -3,22 +3,36 @@
 @model IEnumerable<Submission>
 
 @{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@{
     ViewData["Title"] = "Submissions";
 }
 
 <h1>Submissions</h1>
 
+
 <form method="get" asp-action="Index">
-    <label for="filter" class="control-label">Filter</label>
-    <select name="filter" class="form-select">
-        <option value="New">New</option>
-        <option value="All">All</option>
-        <option value="Advanced">Advanced</option>
-        <option value="Accepted">Accepted</option>
-        <option value="Rejected">Rejected</option>
-    </select>
-    <button class="btn btn-primary" type="Submit">View</button> 
+    <label for="filter">Filter</label>
+    <div class="row">
+        <div class="col">
+                <select name="filter" class="form-control">
+                    <option value="New">New</option>
+                    <option value="All">All</option>
+                    <option value="Advanced">Advanced</option>
+                    <option value="Accepted">Accepted</option>
+                    <option value="Rejected">Rejected</option>
+                </select>
+        </div>
+        <div class="col">
+            <button class="btn btn-primary" type="Submit">View</button> 
+        </div>
+    </div>
 </form>
+
+<br>
+<br>
 
 <table class="table">
     <thead>

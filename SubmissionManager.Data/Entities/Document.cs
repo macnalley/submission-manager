@@ -13,7 +13,7 @@ namespace SubmissionManager.Data.Entities
         [ForeignKey("SubmissionId")]
         public int SubmissionId { get; set; }
         [Required, NotMapped]
-        public IFormFile File { get; set; }
+        public IFormFile? File { get; set; }
         [FileExtensions(Extensions = "doc,docx,txt,rtf"), NotMapped]
         public string UploadedFileName 
         {
@@ -37,7 +37,11 @@ namespace SubmissionManager.Data.Entities
             {
                 using (var document = WordprocessingDocument.Open(DocumentPath, false))
                 {
-                    int.TryParse(document.ExtendedFilePropertiesPart.Properties.Words.Text, out wordCount);
+                    if (document.ExtendedFilePropertiesPart is not null)
+                    if (document.ExtendedFilePropertiesPart.Properties.Words is not null)
+                    {
+                        int.TryParse(document.ExtendedFilePropertiesPart.Properties.Words.Text, out wordCount);
+                    }
                 }
             }
             else if (Path.GetExtension(FileName) == ".txt" || Path.GetExtension(FileName) == ".rtf")
@@ -58,7 +62,7 @@ namespace SubmissionManager.Data.Entities
                 }                
             }
             
-            wordCount = (int) Math.Round(wordCount / 100d) * 100; 
+            wordCount = (int) Math.Round(wordCount / 10d) * 10; 
             return wordCount;
         }
     }
