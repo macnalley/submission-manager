@@ -28,3 +28,6 @@ In the HomeController.cs, LINQ queries are used to retrieve a submission when a 
 
 #### Analyze text and display information about it.
 Every uploaded file is analyzed to retrieve its word count via the WordCounty() method in Document.cs in the SubmissionManager.Data entities. .txt and .rtf files are converted into a string, which then uses a regex pattern to count the number of words. .doc and .docx files use Microsoft's DocumentFormat.OpenXml package, which is used for manipulating MS Office files, to retrieve the word count from the file's metadata.
+
+#### Create an additional class which inherits one or more properties from its parent
+The SubmissionContext class in context.cs in SubmissionManager.Data inherits from the DbContext class. The HomeController and AdminController classes in SubmissionManager.WebApp both inherit from the Controller class.
