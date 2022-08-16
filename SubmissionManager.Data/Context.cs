@@ -8,9 +8,24 @@ public class SubmissionContext : DbContext
     public SubmissionContext() : base()
     {
         Database.EnsureCreated();
+
     }
 
     public DbSet<Submission> Submissions { get; set; }
+    public DbSet<User> Users { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+
+        modelBuilder.Entity<User>()
+                    .HasData(new User 
+                    { 
+                        Id = 1, 
+                        UserName = "Admin", 
+                        Password = "SubmissionManagerPassword"
+                    });
+    }
 
     protected override void OnConfiguring(DbContextOptionsBuilder opt)
     {
@@ -30,5 +45,13 @@ public class SubmissionContext : DbContext
         var submission = await Submissions.Where(s => s.Id == id && s.Email == email).SingleOrDefaultAsync();
 
         return submission;
+    }
+
+    public async Task<User> GetByUsernameAndPassword(string userName, string password)
+    {
+        var user = await Users.Where(u => u.UserName == userName && u.Password == password)
+                              .SingleOrDefaultAsync();
+
+        return user;
     }
 }

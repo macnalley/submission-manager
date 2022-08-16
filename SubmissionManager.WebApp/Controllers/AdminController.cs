@@ -1,16 +1,12 @@
-using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using SubmissionManager.WebApp.Models;
 using SubmissionManager.Data.Entities;
 using SubmissionManager.Data;
 using Microsoft.EntityFrameworkCore;
-using System.Net;
-using System.IO;
-using Microsoft.AspNetCore.StaticFiles;
-using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SubmissionManager.WebApp.Controllers;
 
+[Authorize]
 public class AdminController : Controller
 {
     private readonly ILogger<HomeController> _logger;
