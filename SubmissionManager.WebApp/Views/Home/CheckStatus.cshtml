@@ -37,13 +37,14 @@
                 {
                     case Status.New: 
                         <p>Your submission is still under consideration.</p>
+                        <p>Position in queue: @Model.QueuePosition</p>
                         break;
                     case Status.Advanced:
                         <p>Your submission has made to our second round of evaluations 
                             and is still under consideration.</p>
                         break;
                     case Status.Rejected:
-                        <p>We apologize, but your submission isn't what we're looking for right now, 
+                        <p>We apologize, your submission isn't what we're looking for right now, 
                             but we appreciate your giving us the opportunity to review it.</p>
                         break;
                     case Status.Accepted:

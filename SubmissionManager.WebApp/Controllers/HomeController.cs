@@ -96,6 +96,10 @@ public class HomeController : Controller
         }
         else model.Id = 0;
 
+        var unreadSubmissions = await _context.GetUnreadAsync();
+        int queuePosition = unreadSubmissions.IndexOf(submission) + 1;
+        model.QueuePosition = queuePosition;
+
         return View(model);
     }
 }

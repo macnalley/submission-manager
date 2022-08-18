@@ -8,4 +8,5 @@ public class SubmissionModel
     [Required]
     public string Email { get; set; } = "";
     public Status Status { get; set; }
+    public int QueuePosition { get; set; }
 }

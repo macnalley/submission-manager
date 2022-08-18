@@ -54,4 +54,12 @@ public class SubmissionContext : DbContext
 
         return user;
     }
+
+    public async Task<List<Submission>> GetUnreadAsync()
+    {
+        var unreadSubmissions = await Submissions.Where(s => s.Status == Status.New)
+                                                 .ToListAsync();
+
+        return unreadSubmissions;
+    }
 }
