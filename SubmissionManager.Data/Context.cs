@@ -62,4 +62,19 @@ public class SubmissionContext : DbContext
 
         return unreadSubmissions;
     }
+
+    public async Task<Boolean> AlreadySubmitted(Submission submission)
+    {
+        var consideredSubmissions = await Submissions.Where(s=> s.Status == Status.New || 
+                                                                s.Status == Status.Advanced)
+                                                     .ToListAsync();
+
+        
+        var alreadyExistingSubmission = consideredSubmissions.Where(s => s.Email == submission.Email)
+                                                             .FirstOrDefault();
+
+        if (alreadyExistingSubmission != null)
+            return true;
+        else return false;
+    }
 }

@@ -25,6 +25,18 @@
     </div>
 </div>
 
+@if (Model.Message != null)
+{
+    <div class="d-flex justify-content-center">
+        <div class="w-25 card p-3 align-items-center">
+            <div>
+                <p>@Model.Message</p>
+            </div>
+        </div>
+    </div>
+
+}
+
 @if (Model.Id > 0)
 {
     <div class="d-flex justify-content-center">

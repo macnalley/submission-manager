@@ -19,18 +19,16 @@ public class HomeController : Controller
         _environment = environment;
     }
 
-    public IActionResult Index()
-    {
-        return View();
-    }
+    // public IActionResult Index()
+    // {
+    //     return View();
+    // }
 
-    [HttpGet]
     public IActionResult Index(SubmissionModel model)
     {
         return View(model);
     }
 
-    [HttpGet]
     public IActionResult Submit()
     {
         return View();
@@ -45,6 +43,15 @@ public class HomeController : Controller
             model.Author is not null &&
             model.Title is not null)
         {
+            var returnModel = new SubmissionModel();
+
+            if (await _context.AlreadySubmitted(model))
+            {
+                returnModel.Message = "Please do not submit more than one piece at a time.";
+                
+                return RedirectToAction("Index", returnModel);
+            }
+            
             var file = model.Document.File;
 
             if (file.Length > 0)
@@ -64,12 +71,13 @@ public class HomeController : Controller
             } else BadRequest();
 
             _context.Add(model);
-            await _context.SaveChangesAsync();
-            
-            var returnModel = new SubmissionModel() { Id = model.Id };
+            await _context.SaveChangesAsync(); 
+
+            returnModel.Id = model.Id;
 
             return RedirectToAction("Index", returnModel);
         }
+        
         else return View();
         
     }
@@ -80,12 +88,13 @@ public class HomeController : Controller
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
 
-    public IActionResult CheckStatus()
-    {
-        return View();
-    }
+    // public IActionResult CheckStatus()
+    // {
+    //     return View();
+    // }
 
-    [HttpGet]
+    // [HttpGet]
+    
     public async Task<IActionResult> CheckStatus(SubmissionModel model)
     {
         var submission = await _context.GetByIdAndEmailAsync(model.Id, model.Email);
